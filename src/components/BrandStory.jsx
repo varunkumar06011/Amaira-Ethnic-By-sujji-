@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './BrandStory.module.css';
+import founderImage from '../assets/founder-image.jpeg';
 
 const BrandStory = () => {
   return (
@@ -14,7 +15,23 @@ const BrandStory = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <img src="/founder image.jpeg" alt="Amaira Founder" />
+            {/* Pointer-events wrapper — blocks right-click / drag on the image area */}
+            <div className={styles.imageProtect}>
+              {/* Watermark overlay */}
+              <div className={styles.watermark} aria-hidden="true">
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <span key={i}>© amaira-ethnic-by-sujji</span>
+                ))}
+              </div>
+              <img
+                src={founderImage}
+                alt="Amaira Founder"
+                className={styles.founderImg}
+                draggable="false"
+                onDragStart={(e) => e.preventDefault()}
+                onContextMenu={(e) => e.preventDefault()}
+              />
+            </div>
           </motion.div>
         </div>
         <div className={styles.contentCol}>

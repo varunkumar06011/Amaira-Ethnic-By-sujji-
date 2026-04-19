@@ -177,6 +177,9 @@
 }
 
 .otpInputGrid input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
   height: 52px;
   text-align: center;
   font-size: 1.3rem;

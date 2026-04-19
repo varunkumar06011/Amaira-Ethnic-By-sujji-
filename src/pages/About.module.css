@@ -1,0 +1,70 @@
+.aboutPage {
+  background-color: var(--color-white);
+  min-height: 100vh;
+}
+
+.hero {
+  height: 60vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/about_hero.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.heroContent h1 {
+  font-size: 5rem;
+  font-family: var(--font-serif);
+  margin-bottom: 1rem;
+}
+
+.heroContent p {
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.values {
+  padding: 10rem 0;
+  background-color: var(--color-off-white);
+}
+
+.container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.valueGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.valueItem h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-charcoal);
+  font-family: var(--font-serif);
+}
+
+.valueItem p {
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.7;
+}
+
+@media (max-width: 1024px) {
+  .heroContent h1 {
+    font-size: 3.5rem;
+  }
+  
+  .valueGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

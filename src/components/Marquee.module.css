@@ -1,0 +1,25 @@
+.marquee {
+  background-color: var(--color-charcoal);
+  color: var(--color-cream);
+  padding: 0.75rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.track {
+  display: inline-block;
+  animation: scroll 30s linear infinite;
+}
+
+.item {
+  display: inline-block;
+  padding: 0 4rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

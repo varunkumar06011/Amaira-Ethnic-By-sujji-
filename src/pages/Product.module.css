@@ -235,7 +235,7 @@
 .quantityPicker {
   display: flex;
   align-items: center;
-  border: 1px solid #E5E7EB;
+  border: 2px solid #000000;
   border-radius: 4px;
   padding: 0.25rem;
 }
@@ -243,8 +243,12 @@
 .quantityPicker button {
   width: 35px;
   height: 35px;
-  font-size: 1.25rem;
-  color: var(--color-charcoal);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .quantityPicker span {

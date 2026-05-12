@@ -167,7 +167,8 @@ const Product = () => {
                 </button>
                 <button 
                   className={styles.buyNowBtn}
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     const message = `Hi, I want to purchase ${product.name} for ${formatPrice(product.price)} from your side`;
                     window.open(`https://wa.me/917013617464?text=${encodeURIComponent(message)}`, '_blank');
                   }}

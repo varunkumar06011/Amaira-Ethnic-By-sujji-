@@ -146,3 +146,29 @@
   font-size: 1rem;
   color: var(--color-charcoal);
 }
+
+@media (max-width: 768px) {
+  .overlay {
+    opacity: 1;
+    background: transparent;
+    padding: 0.5rem;
+  }
+  .quickAdd {
+    transform: translateY(0);
+    padding: 0.6rem;
+    font-size: 0.65rem;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  .wishlistBtn {
+    width: 30px;
+    height: 30px;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+  .bestSellerBadge {
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.6rem;
+  }
+}

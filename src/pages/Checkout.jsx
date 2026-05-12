@@ -27,23 +27,33 @@ const STEPS = {
 
 const Checkout = () => {
   const { cartItems, products, formatPrice, getCartSubtotal, clearCart } = useContext(ShopContext);
-  const [currentStep, setCurrentStep] = useState(STEPS.IDENTITY);
-  const [phone, setPhone] = useState('');
+  const [currentStep, setCurrentStep] = useState(() => localStorage.getItem('checkout_step') || STEPS.IDENTITY);
+  const [phone, setPhone] = useState(() => localStorage.getItem('checkout_phone') || '');
   const [otp, setOtp] = useState(['', '', '', '']);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const [address, setAddress] = useState({
-    firstName: '',
-    lastName: '',
-    street: '',
-    city: '',
-    state: '',
-    pin: ''
+  const [address, setAddress] = useState(() => {
+    const saved = localStorage.getItem('checkout_address');
+    return saved ? JSON.parse(saved) : {
+      firstName: '',
+      lastName: '',
+      street: '',
+      city: '',
+      state: '',
+      pin: ''
+    };
   });
   const [agreedToTC, setAgreedToTC] = useState(false);
   const [agreedToPP, setAgreedToPP] = useState(false);
   const [showTCModal, setShowTCModal] = useState(false);
   const [showPPModal, setShowPPModal] = useState(false);
+
+  // Sync state to localStorage
+  React.useEffect(() => {
+    localStorage.setItem('checkout_step', currentStep);
+    localStorage.setItem('checkout_phone', phone);
+    localStorage.setItem('checkout_address', JSON.stringify(address));
+  }, [currentStep, phone, address]);
 
   // Filter out items that are in context but might not exist in products data
   const cartArray = Object.entries(cartItems).map(([id, qty]) => {
@@ -117,6 +127,9 @@ const Checkout = () => {
             colors: ['#D4AF37', '#1A1A1A', '#FFFFFF']
           });
           clearCart();
+          localStorage.removeItem('checkout_step');
+          localStorage.removeItem('checkout_phone');
+          localStorage.removeItem('checkout_address');
         }, 1500);
       }
     }

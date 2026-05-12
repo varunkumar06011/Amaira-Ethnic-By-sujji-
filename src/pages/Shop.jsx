@@ -6,22 +6,25 @@ import ProductCard from '../components/ProductCard';
 import styles from './Shop.module.css';
 
 const Shop = () => {
-  const { products } = useContext(ShopContext);
+  const { products, search, setSearch, showSearch } = useContext(ShopContext);
   const location = useLocation();
   const [filterCategory, setFilterCategory] = useState('all');
   const [activeFilter, setActiveFilter] = useState(null);
   const [sortOption, setSortOption] = useState('newest');
+  const [isNewArrivals, setIsNewArrivals] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const category = params.get('category');
     const filter = params.get('filter');
+    const isNew = params.get('new') === 'true';
     
     // Reset to 'all' if no category is present, otherwise set to the URL value
     setFilterCategory(category || 'all');
     
     // Explicitly reset the active filter unless 'best-seller' is specified in the URL
     setActiveFilter(filter);
+    setIsNewArrivals(isNew);
   }, [location]);
 
   const filteredProducts = products.filter(p => {
@@ -37,11 +40,24 @@ const Shop = () => {
       matchesFilter = p.images.some(img => img.toLowerCase().includes('(best seller)'));
     }
 
-    return matchesCategory && matchesFilter;
+    // New Launch filter (strictly latest stock)
+    let matchesNew = true;
+    if (isNewArrivals) {
+      matchesNew = p.id >= 11; // Only show newly added stock
+    }
+
+    // Search filter
+    let matchesSearch = true;
+    if (search) {
+      matchesSearch = p.name.toLowerCase().includes(search.toLowerCase()) || 
+                      p.category.toLowerCase().includes(search.toLowerCase());
+    }
+
+    return matchesCategory && matchesFilter && matchesNew && matchesSearch;
   }).sort((a, b) => {
     if (sortOption === 'price-low') return a.price - b.price;
     if (sortOption === 'price-high') return b.price - a.price;
-    return 0; // newest/featured
+    return b.id - a.id; // newest/featured sorted by ID descending
   });
 
   return (
@@ -61,10 +77,10 @@ const Shop = () => {
               <span>Filter By:</span>
               <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
                 <option value="all">All Categories</option>
-                <option value="dresses">Dresses</option>
-                <option value="coords">Co-ords</option>
-                <option value="sarees">Sarees</option>
-                <option value="accessories">Accessories</option>
+                <option value="Kurtas">Kurtas</option>
+                <option value="Co-ords">Co-ords</option>
+                <option value="Festive Wear">Festive Wear</option>
+                <option value="Accessories">Accessories</option>
               </select>
             </div>
             

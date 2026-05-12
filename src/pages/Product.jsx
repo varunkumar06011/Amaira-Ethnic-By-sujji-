@@ -46,7 +46,7 @@ const Product = () => {
     setTimeout(() => setIsCopied(false), 2000);
   };
 
-  const sizes = ['S', 'M', 'L', 'XL', '2XL'];
+  const sizes = product.sizes || ['M', 'L', 'XL', 'XXL'];
 
   return (
     <div className={styles.productPage}>
@@ -152,10 +152,10 @@ const Product = () => {
             <div className={styles.actions}>
               <button 
                 className={styles.wishlistActionBtn}
-                onClick={() => toggleWishlist(product.id)}
+                onClick={() => addToCart(product.id, quantity)}
               >
-                <Heart size={20} fill={isInWishlist ? "white" : "none"} />
-                {isInWishlist ? "SAVED TO WISHLIST" : "ADD TO WISHLIST"}
+                <Heart size={22} color="#000000" fill="#000000" />
+                ADD TO BAG
               </button>
               
               <div className={styles.primaryActions}>
@@ -168,8 +168,8 @@ const Product = () => {
                 <button 
                   className={styles.buyNowBtn}
                   onClick={() => {
-                    addToCart(product.id, quantity);
-                    // navigate to checkout if I wanted to skip
+                    const message = `Hi, I want to purchase ${product.name} for ${formatPrice(product.price)} from your side`;
+                    window.open(`https://wa.me/917013617464?text=${encodeURIComponent(message)}`, '_blank');
                   }}
                 >
                   BUY NOW

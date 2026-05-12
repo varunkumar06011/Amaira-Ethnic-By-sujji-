@@ -185,7 +185,13 @@
 
 @media (max-width: 768px) {
   .galleryGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
   }
 }

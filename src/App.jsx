@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import WhatsAppButton from './components/WhatsAppButton';
+import SearchBar from './components/SearchBar';
 import './styles/variables.css';
 
 function App() {
@@ -24,7 +25,6 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:id" element={<Product />} />
-            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </main>
         <Footer />

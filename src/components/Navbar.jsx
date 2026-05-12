@@ -1,12 +1,13 @@
 // Triggering Vite HMR
 import React, { useContext, useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { Search, User, ShoppingBag, Heart, ChevronDown, Menu, X } from 'lucide-react';
 import { ShopContext } from '../context/ShopContext';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
-  const { getCartCount, setIsCartOpen } = useContext(ShopContext);
+  const navigate = useNavigate();
+  const { getCartCount, setIsCartOpen, setShowSearch } = useContext(ShopContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -41,9 +42,7 @@ const Navbar = () => {
         </nav>
 
         <div className={styles.navRight}>
-          <button className={styles.iconBtn}><Search size={20} /></button>
           <button className={`${styles.iconBtn} ${styles.hideOnMobile}`}><User size={20} /></button>
-          <button className={`${styles.iconBtn} ${styles.hideOnMobile}`}><Heart size={20} /></button>
           <button className={styles.iconBtn} onClick={() => setIsCartOpen(true)}>
             <ShoppingBag size={20} />
             {getCartCount() > 0 && <span className={styles.cartCount}>{getCartCount()}</span>}

@@ -15,6 +15,8 @@ export const ShopProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : [];
   });
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [search, setSearch] = useState('');
+  const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('amaira_cart', JSON.stringify(cartItems));
@@ -112,7 +114,11 @@ export const ShopProvider = ({ children }) => {
     getCartTotal: getCartSubtotal,
     getCartSubtotal,
     clearCart,
-    formatPrice
+    formatPrice,
+    search,
+    setSearch,
+    showSearch,
+    setShowSearch
   };
 
   return (

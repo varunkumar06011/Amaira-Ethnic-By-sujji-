@@ -129,6 +129,9 @@
   .ghostText {
     font-size: 35vw;
   }
+  .textContent h1 {
+    font-size: 3rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -137,21 +140,37 @@
     padding: 2rem 0;
   }
   .container {
-    width: 95%;
+    width: 92%;
+  }
+  .heroImg {
+    height: 40vh;
+    padding: 1rem;
   }
   .textContent h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
   .overlay {
     padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  .ghostText {
+    top: 50%;
   }
 }
 
 @media (max-width: 480px) {
+  .heroImg {
+    height: 35vh;
+  }
   .textContent h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   .textContent p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .shopBtn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.75rem;
   }
 }

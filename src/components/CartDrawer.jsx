@@ -203,11 +203,21 @@ const CartDrawer = () => {
                 <button 
                   className={styles.checkoutBtn}
                   onClick={() => {
-                    navigate('/checkout');
+                    const cartSummary = cart.map(item => {
+                      const product = products.find(p => p.id === item.id);
+                      return product ? `${product.name} (x${item.quantity}) - ${formatPrice(product.price * item.quantity)}` : '';
+                    }).join('\n');
+                    
+                    const shipping = progress === 100 ? 0 : 60;
+                    const grandTotal = total + shipping;
+                    
+                    const message = `Hi, I want to purchase the following items:\n\n${cartSummary}\n\nShipping: ${shipping === 0 ? 'FREE' : formatPrice(shipping)}\nTotal: ${formatPrice(grandTotal)}\n\nPlease process my order.`;
+                    
+                    window.open(`https://wa.me/917013617464?text=${encodeURIComponent(message)}`, '_blank');
                     setIsCartOpen(false);
                   }}
                 >
-                  PROCEED TO BUY NOW <ArrowRight size={20} />
+                  PROCEED ON WHATSAPP <ArrowRight size={20} />
                 </button>
                 
                 <div className={styles.trustRow}>

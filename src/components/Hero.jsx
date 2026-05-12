@@ -29,7 +29,7 @@ const Hero = () => {
               >
                 <div className={styles.highlightWrapper}>
                   <span className={styles.label}>PREMIUM QUALITY</span>
-                  <h1>The Kurthi <mark>you deserve</mark>, at a price you'll love.</h1>
+                  <h1>Looks <mark>luxurious</mark>. Feels effortless. Costs less.</h1>
                   <p>BUDGET FRIENDLY ELEGANCE FOR MODERN WOMEN.</p>
                 </div>
                 <Link to="/shop" className={styles.shopBtn}>SHOP THE COLLECTION</Link>

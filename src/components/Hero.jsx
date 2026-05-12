@@ -32,7 +32,7 @@ const Hero = () => {
                   <h1>Looks <mark>luxurious</mark>. Feels effortless. Costs less.</h1>
                   <p>BUDGET FRIENDLY ELEGANCE FOR MODERN WOMEN.</p>
                 </div>
-                <Link to="/shop" className={styles.shopBtn}>SHOP THE COLLECTION</Link>
+                <Link to="/shop" className={styles.shopBtn}>EXPLORE THE COLLECTION</Link>
               </motion.div>
             </div>
           </div>

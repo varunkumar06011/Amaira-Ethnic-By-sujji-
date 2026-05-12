@@ -45,14 +45,14 @@ const BrandStory = () => {
             <span className={styles.tagline}>THE STORY BEHIND AMAIRA</span>
             <h2>A Passion for Tradition.</h2>
             <p>
-              I am a brave girl who completed my MBA and chose to work for my passion. 
-              My journey with Amaira Ethnic focuses on bringing budget-friendly, 
-              high-quality Kurthis to modern women across India.
+              Amaira Ethnic was born from a passion for timeless tradition and affordable elegance. 
+              After completing my MBA, I chose to follow my dream of building a brand that brings 
+              beautiful, high-quality ethnic wear to women across India.
             </p>
             <p>
-              Successfully completed 1+ year serving happy customers, 
-              sells and counting. Every piece is curated with the same passion 
-              that started this journey.
+              Over the past year, Amaira has proudly served hundreds of happy customers with 
+              carefully curated styles that blend comfort, culture, and confidence. 
+              Every piece reflects the passion and love behind this journey.
             </p>
             <div className={styles.stats}>
               <div className={styles.stat}>
